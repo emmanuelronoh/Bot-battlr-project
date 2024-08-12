@@ -1,0 +1,11 @@
+/* src/components/FilterBar.css */
+
+/* This is the style for the filter bar that helps you find bots */
+.filter-bar {
+    /* Center the content inside the filter bar */
+    text-align: center;
+    
+    /* Add space below the filter bar */
+    margin-bottom: 20px;
+  }
+  

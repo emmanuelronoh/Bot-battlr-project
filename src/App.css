@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+/* Center the entire app's content both horizontally and vertically */
+.app-container {
+  display: grid; /* Use grid layout for the container */
+  place-items: center; /* Center items horizontally and vertically */
+  min-height: 100vh; /* Make sure the container takes up the full height of the viewport */
+  padding: 20px; /* Add some space around the container */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Center the text for all h2 headings */
+h2 {
+  text-align: center; /* Center-align the text */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Center an element horizontally with a specific width */
+.centered-element {
+  margin: 0 auto; /* Center the element horizontally */
+  width: 50%; /* Set the width of the element to 50% of its container */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Create a parent container that takes up the full height of the viewport */
+.parent {
+  position: relative; /* Set the position relative for child positioning */
+  height: 100vh; /* Make the container as tall as the viewport */
 }
 
-.App-link {
-  color: #61dafb;
+/* Center a child element within the parent container */
+.child {
+  position: absolute; /* Position the child absolutely relative to the parent */
+  top: 50%; /* Move the child halfway down from the top of the parent */
+  left: 50%; /* Move the child halfway from the left of the parent */
+  transform: translate(-50%, -50%); /* Shift the child back up and left by half its width and height */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style for a table within a flexible container */
+.table-container {
+  flex: 1; /* Allow the container to take up available space */
+  display: flex; /* Use flex layout */
+  flex-direction: column; /* Arrange items in a column */
+  overflow: auto; /* Allow scrolling if content overflows */
+  padding: 20px; /* Add space around the content */
+}
+
+/* Style the table to take up full width of its container */
+.table-container table {
+  width: 100%; /* Make the table as wide as the container */
+  border-collapse: collapse; /* Collapse table borders for a cleaner look */
+}
+
+/* Style for table header and data cells */
+.table-container th, .table-container td {
+  border: 1px solid #ddd; /* Light border color for cells */
+  padding: 8px; /* Add space inside cells */
+  text-align: left; /* Align text to the left */
+}
+
+/* Style for table header cells */
+.table-container th {
+  background-color: #f4f4f4; /* Light background color for headers */
+  font-weight: bold; /* Make header text bold */
+}
+
+/* Ensure long words break and don't overflow in table data cells */
+.table-container td {
+  word-wrap: break-word; /* Break long words to prevent overflow */
+}
+
+/* Style for the main heading */
+h1 {
+  color: crimson; /* Set the text color */
+  background-color: green; /* Set the background color */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Make the heading take up the full width of its container */
+  height: 60px; /* Set a specific height for the heading */
+  font-size: 50px; /* Set the font size */
+  font-family: Georgia, 'Times New Roman', Times, serif; /* Specify the font family */
+  margin-top: 0%; /* Remove any top margin */
 }

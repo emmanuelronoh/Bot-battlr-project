@@ -1,0 +1,6 @@
+/* This is the CSS file for styling the BotSpecs component */
+
+/* Style for the container that holds the bot details */
+.bot-specs {
+    text-align: center; /* Aligns all the text inside this container to the center */
+}

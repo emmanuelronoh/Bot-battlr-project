@@ -1,0 +1,66 @@
+/* src/components/YourBotArmy.css */
+
+/* Style for the YourBotArmy section */
+.your-bot-army {
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Maximum width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px; /* Space inside */
+    height: 100%; /* Full height */
+    display: flex; /* Arrange items in column */
+    flex-direction: column; /* Vertical arrangement */
+    overflow-y: auto; /* Scroll if content overflows */
+    box-sizing: border-box; /* Include padding and border in size */
+  }
+  
+  /* Style for the table in YourBotArmy */
+  .army-table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Merge borders */
+  }
+  
+  /* Style for table headers and cells */
+  .army-table th, .army-table td {
+    border: 1px solid #ddd; /* Light border */
+    padding: 8px; /* Space inside cells */
+    text-align: center; /* Center text */
+  }
+  
+  /* Style for table headers */
+  .army-table th {
+    background-color: #f4f4f4; /* Light gray background */
+    font-weight: bold; /* Bold text */
+  }
+  
+  /* Style for even table rows */
+  .army-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background */
+  }
+  
+  /* Style for hovered table rows */
+  .army-table tr:hover {
+    background-color: #f1f1f1; /* Light hover background */
+  }
+  
+  /* Style for bot avatars */
+  .bot-avatar {
+    width: 50px; /* Width of avatar */
+    height: 50px; /* Height of avatar */
+    border-radius: 50%; /* Round shape */
+  }
+  
+  /* Style for delete buttons */
+  .delete-button {
+    color: red; /* Red text */
+    border: none; /* No border */
+    background: none; /* No background */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+  }
+  
+  /* Style for all buttons */
+  button {
+    margin: 0 5px; /* Space around buttons */
+    padding: 5px 10px; /* Space inside buttons */
+  }
+  

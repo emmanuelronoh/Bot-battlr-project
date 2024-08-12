@@ -1,0 +1,60 @@
+    /* Style for the main container of the bot collection */
+.bot-collection {
+    width: 100%; /* Makes sure the container takes up the full width of its parent */
+    max-width: 1200px; /* Limits the maximum width of the container to 1200 pixels */
+    margin: 0 auto; /* Centers the container horizontally in the middle of the page */
+    padding: 20px; /* Adds 20 pixels of space inside the container around the content */
+  }
+  
+  /* Style for the table within the bot collection */
+  .bot-table {
+    width: 100%; /* Makes the table stretch to the full width of its container */
+    border-collapse: collapse; /* Makes sure there are no gaps between table cells */
+  }
+  
+  /* Style for table header and table data cells */
+  .bot-table th, .bot-table td {
+    border: 1px solid #ddd; /* Adds a light gray border around each cell */
+    padding: 8px; /* Adds 8 pixels of space inside each cell */
+    text-align: center; /* Centers the text inside each cell */
+  }
+  
+  /* Style specifically for table headers (th) */
+  .bot-table th {
+    background-color: #f4f4f4; /* Gives a light gray background color to the header cells */
+    font-weight: bold; /* Makes the text in the header cells bold */
+  }
+  
+  /* Style for even-numbered rows in the table */
+  .bot-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Gives a light gray background color to every other row */
+  }
+  
+  /* Style for table rows when hovered over with the mouse */
+  .bot-table tr:hover {
+    background-color: #f1f1f1; /* Changes the background color of the row to a slightly darker gray when hovered */
+  }
+  
+  /* Style for the bot avatar images */
+  .bot-avatar {
+    width: 50px; /* Sets the width of the avatar to 50 pixels */
+    height: 50px; /* Sets the height of the avatar to 50 pixels */
+    border-radius: 50%; /* Makes the avatar circular by rounding the corners */
+  }
+  
+  /* Style for the delete button */
+  .delete-button {
+    color: red; /* Sets the text color of the delete button to red */
+    background: none; /* Removes the background of the button */
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the button, indicating it is clickable */
+    font-size: 16px; /* Sets the font size of the button text to 16 pixels */
+  }
+  
+  /* Additional styling for the bot collection to ensure it fits and scrolls properly */
+  .bot-collection {
+    width: 100%; /* Ensures the bot collection stretches to fill the full width */
+    height: 100%; /* Makes sure it stretches to fill the full height of its container */
+    overflow: auto; /* Adds scroll bars if the content inside the collection overflows */
+    box-sizing: border-box; /* Includes padding and border in the total width and height calculation */
+  }
+  

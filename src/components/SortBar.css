@@ -1,0 +1,8 @@
+/* This is the style for the SortBar */
+.sort-bar {
+    /* Center the text in the middle of the SortBar */
+    text-align: center;
+    
+    /* Add some space below the SortBar */
+    margin-bottom: 20px;
+}

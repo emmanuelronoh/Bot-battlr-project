@@ -1,32 +1,40 @@
-// Import React to use its features
+// Import React to use JSX and component features
 import React from 'react';
-// Import the CSS file to style this component
+// Import the CSS file to apply specific styles for this component
 import './BotSpecs.css';
 
-// This is a function that makes a special part of our page to show details about a bot
+// Define the BotSpecs component to display detailed information about a bot
 function BotSpecs({ bot, onEnlist }) {
   return (
-    <div>
-      {/* Show the bot's name in a big heading */}
+    <div className='div'>
+      {/* Display the bot's name in a prominent heading */}
       <h2>{bot.name}</h2>
-      {/* Show the bot's picture with a width of 100 pixels */}
+      
+      {/* Display the bot's avatar image with a fixed width of 100 pixels */}
       <img src={bot.avatar_url} alt={bot.name} width="100" />
-      {/* Show the bot's health */}
+      
+      {/* Display the bot's health attribute */}
       <p>Health: {bot.health}</p>
-      {/* Show the bot's damage */}
+      
+      {/* Display the bot's damage attribute */}
       <p>Damage: {bot.damage}</p>
-      {/* Show the bot's armor */}
+      
+      {/* Display the bot's armor attribute */}
       <p>Armor: {bot.armor}</p>
-      {/* Show the bot's class/type */}
+      
+      {/* Display the bot's class/type (e.g., Support, Medic) */}
       <p>Class: {bot.bot_class}</p>
-      {/* Show the bot's catchphrase */}
+      
+      {/* Display the bot's catchphrase */}
       <p>Catchphrase: {bot.catchphrase}</p>
-      {/* Button that lets you add this bot to your army */}
+      
+      {/* Button to enlist this bot into the user's army */}
+      {/* Calls the onEnlist function passed as a prop with the current bot as an argument */}
       <button onClick={() => onEnlist(bot)}>Enlist Bot</button>
     </div>
   );
 }
 
-// This lets us use the BotSpecs function in other parts of our app
+// Export the BotSpecs component for use in other parts of the application
 export default BotSpecs;
 

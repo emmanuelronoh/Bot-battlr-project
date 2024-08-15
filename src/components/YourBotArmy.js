@@ -1,42 +1,44 @@
-// src/components/YourBotArmy.js
+// Import React to use JSX and component features
+import React from 'react';
+// Import the CSS file to style the YourBotArmy component
+import './YourBotArmy.css';
 
-import React from 'react'; // Import React to use React features like components
-import './YourBotArmy.css'; // Import CSS styles to make the component look nice
-
-// Define a component named YourBotArmy
+// Define the YourBotArmy component to display the user's bot army
 const YourBotArmy = ({ army, removeFromArmy, deleteBot }) => {
   return (
-    <div className="your-bot-army"> {/* This is the main container for the YourBotArmy section */}
-      <h2>Your Bot Army</h2> {/* This is the heading that shows "Your Bot Army" */}
+    <div className="your-bot-army"> {/* Main container for the YourBotArmy section */}
+      <h2>Your Bot Army</h2> {/* Heading that indicates the section for the user's bot army */}
       
-      {/* Check if the army has no bots */}
+      {/* Conditional rendering to check if the army is empty */}
       {army.length === 0 ? (
-        // incase there are no bots show this message
+        // Message displayed when no bots are in the army
         <p>No bots enlisted yet.</p> 
       ) : (
-        <table className="army-table"> {/* Create a table to display the bots */}
-          <thead> {/* Table header section */}
-            <tr> {/* Table row for headers */}
-              <th>ID</th> {/* Header for bot ID */}
-              <th>Name</th> {/* Header for bot name */}
-              <th>Avatar</th> {/* Header for bot avatar */}
-              <th>Actions</th> {/* Header for action buttons */}
+        <table className="army-table"> {/* Table to display the list of bots in the army */}
+          <thead> {/* Table header containing column titles */}
+            <tr> {/* Header row */}
+              <th>ID</th> {/* Column header for bot ID */}
+              <th>Name</th> {/* Column header for bot name */}
+              <th>Avatar</th> {/* Column header for bot avatar */}
+              <th>Actions</th> {/* Column header for action buttons */}
             </tr>
           </thead>
-          <tbody> {/* Table body section */}
-            {/* Loop through each bot in the army */}
+          <tbody> {/* Table body containing the rows of bot data */}
+            {/* Map over each bot in the army to create a row for it */}
             {army.map(bot => (
-              <tr key={bot.id}> {/* Create a table row for each bot */}
+              <tr key={bot.id}> {/* Unique key for each row to help React identify changes */}
                 <td>{bot.id}</td> {/* Display the bot's ID */}
                 <td>{bot.name}</td> {/* Display the bot's name */}
                 <td>
-                  {/* Show the bot's avatar image */}
+                  {/* Display the bot's avatar image */}
                   <img src={bot.avatar_url} alt={bot.name} className="bot-avatar" />
                 </td>
                 <td>
                   {/* Button to remove the bot from the army */}
+                  {/* Calls removeFromArmy function with the current bot as an argument */}
                   <button onClick={() => removeFromArmy(bot)}>Remove</button>
-                  {/* Button to delete the bot */}
+                  {/* Button to delete the bot completely */}
+                  {/* Calls deleteBot function with the current bot as an argument */}
                   <button onClick={() => deleteBot(bot)} className="delete-button">x</button>
                 </td>
               </tr>
@@ -48,5 +50,5 @@ const YourBotArmy = ({ army, removeFromArmy, deleteBot }) => {
   );
 };
 
-export default YourBotArmy; // Export the YourBotArmy component so it can be used in other parts of the app
-
+// Export the YourBotArmy component so it can be used in other parts of the application
+export default YourBotArmy;

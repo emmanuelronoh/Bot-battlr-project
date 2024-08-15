@@ -1,98 +1,97 @@
 // Import necessary modules and components
-import React, { useState, useEffect } from 'react'; // Import React and hooks
-import BotCollection from './components/BotCollection'; // Import BotCollection component
-import YourBotArmy from './components/YourBotArmy'; // Import YourBotArmy component
-import BotSpecs from './components/BotSpecs'; // Import BotSpecs component
-import SortBar from './components/SortBar'; // Import SortBar component
-import FilterBar from './components/FilterBar'; // Import FilterBar component
-import './App.css'; // Import the CSS file for styling
+import React, { useState, useEffect } from 'react'; // Import React and hooks for state and side-effects
+import BotCollection from './components/BotCollection'; // Import BotCollection component to display bot collection
+import YourBotArmy from './components/YourBotArmy'; // Import YourBotArmy component to manage user's army
+import BotSpecs from './components/BotSpecs'; // Import BotSpecs component to show details of a selected bot
+import SortBar from './components/SortBar'; // Import SortBar component to handle sorting of bots
+import FilterBar from './components/FilterBar'; // Import FilterBar component to filter bots by class
+import './App.css'; // Import CSS for styling
 
-// Main component function for the app
+// Main component function for the application
 function App() {
-  // State variables to store data
-  const [bots, setBots] = useState([]); // List of all bots
-  const [army, setArmy] = useState([]); // List of bots added to the user's army
-  const [selectedBot, setSelectedBot] = useState(null); // Currently selected bot
-  const [sortedBots, setSortedBots] = useState([]); // List of bots sorted based on a criteria
-  const [filterClass, setFilterClass] = useState(null); // Class of bot to filter by
+  // State variables to manage application data
+  const [bots, setBots] = useState([]); // State for all fetched bots
+  const [army, setArmy] = useState([]); // State for the user's army of bots
+  const [selectedBot, setSelectedBot] = useState(null); // State for the currently selected bot
+  const [sortedBots, setSortedBots] = useState([]); // State for bots sorted by criteria
+  const [filterClass, setFilterClass] = useState(null); // State for class-based filter criteria
 
-  // Fetch bots from the server when the component first loads
+  // Fetch bots from the server when the component mounts
   useEffect(() => {
-    fetch('http://localhost:8001/bots') // Request the list of bots
-      .then(response => response.json()) // Convert the response to JSON
+    fetch('http://localhost:8001/bots') // API endpoint to fetch bots
+      .then(response => response.json()) // Convert response to JSON
       .then(data => {
-        setBots(data); // Save the bots in state
-        setSortedBots(data); // Also save in the sorted bots state
+        setBots(data); // Update bots state with fetched data
+        setSortedBots(data); // Initialize sorted bots with the fetched data
       });
-  }, []); // Empty dependency array means this runs once when the component loads
+  }, []); // Empty dependency array ensures this runs only once
 
-  // Function to add a bot to the user's army
+  // Add a bot to the user's army if it's not already included
   const addToArmy = (bot) => {
-    // Check if the bot is not already in the army
-    if (!army.find(b => b.id === bot.id)) {
-      setArmy([...army, bot]); // Add the bot to the army
-      setSelectedBot(null); // Clear the selected bot
+    if (!army.find(b => b.id === bot.id)) { // Check if bot is already in the army
+      setArmy([...army, bot]); // Add the bot to the army array
+      setSelectedBot(null); // Clear selected bot state
     }
   };
 
-  // Function to remove a bot from the user's army
+  // Remove a bot from the user's army
   const removeFromArmy = (bot) => {
-    setArmy(army.filter(b => b.id !== bot.id)); // Remove the bot from the army list
+    setArmy(army.filter(b => b.id !== bot.id)); // Filter out the bot from the army array
   };
 
-  // Function to delete a bot from the server and local state
+  // Delete a bot from both the server and local state
   const deleteBot = (bot) => {
-    fetch(`http://localhost:8001/bots/${bot.id}`, { // Send a DELETE request to the server
-      method: 'DELETE', // Specify the method as DELETE
+    fetch(`http://localhost:8001/bots/${bot.id}`, { // API endpoint to delete the bot
+      method: 'DELETE', // HTTP method to delete the resource
     }).then(() => {
-      // Update the lists to remove the deleted bot
+      // Update local state to reflect the deletion
       setBots(bots.filter(b => b.id !== bot.id));
       setSortedBots(sortedBots.filter(b => b.id !== bot.id));
       setArmy(army.filter(b => b.id !== bot.id));
     });
   };
 
-  // Function to sort the bots based on a given property (e.g., health)
+  // Sort bots based on a specified property (e.g., health)
   const sortBy = (key) => {
-    const sorted = [...sortedBots].sort((a, b) => b[key] - a[key]); // Sort the bots
-    setSortedBots(sorted); // Save the sorted list
+    const sorted = [...sortedBots].sort((a, b) => b[key] - a[key]); // Sort in descending order
+    setSortedBots(sorted); // Update sorted bots state
   };
 
-  // Function to filter bots based on their class (e.g., Support, Medic)
+  // Filter bots based on their class (e.g., Support, Medic)
   const filterByClass = (cls) => {
-    setFilterClass(cls); // Set the filter class
-    const filtered = bots.filter(bot => bot.bot_class === cls); // Filter the bots
-    setSortedBots(filtered); // Save the filtered list
+    setFilterClass(cls); // Update filter criteria
+    const filtered = bots.filter(bot => bot.bot_class === cls); // Apply filter
+    setSortedBots(filtered); // Update sorted bots with filtered results
   };
 
-  // Determine which bots to display based on the filter
+  // Determine which bots to display based on filter criteria
   const filteredBots = filterClass ? bots.filter(bot => bot.bot_class === filterClass) : sortedBots;
 
-  // Render the component
+  // Render the application component
   return (
-    <div> {/* Container for all the content */}
-      <h1>Bot Battlr</h1> {/* Main title of the app */}
+    <div> {/* Main container */}
+      <h1>Bot Battlr</h1> {/* Application title */}
       
-      {/* Display filter options */}
+      {/* Render the filter bar for selecting bot class */}
       <FilterBar filterByClass={filterByClass} /> 
       
-      {/* Display sorting options */}
+      {/* Render the sort bar for sorting bots */}
       <SortBar sortBy={sortBy} /> 
       
-      {/* Check if a bot is selected */}
+      {/* Conditionally render based on whether a bot is selected */}
       {selectedBot ? (
-        // If a bot is selected, show its details
+        // Display selected bot details if a bot is selected
         <BotSpecs bot={selectedBot} onEnlist={addToArmy} /> 
       ) : (
         <>
-          {/* If no bot is selected, show the user's army */}
+          {/* Render the user's army and provide options to remove or delete bots */}
           <YourBotArmy 
             army={army} 
             removeFromArmy={removeFromArmy} 
             deleteBot={deleteBot} 
           /> 
           
-          {/* Show the collection of all bots with filtering and sorting applied */}
+          {/* Render the bot collection with applied filters and sorting */}
           <BotCollection 
             bots={filteredBots} 
             addToArmy={setSelectedBot} 
@@ -104,4 +103,4 @@ function App() {
   );
 }
 
-export default App; // Export the App component for use in other files
+export default App; // Export App component for use in other parts of the application

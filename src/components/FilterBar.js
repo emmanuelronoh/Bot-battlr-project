@@ -1,24 +1,29 @@
-// We bring in the React library and the CSS file to make our FilterBar look nice
+// Import React to use JSX and component features
 import React from 'react';
+// Import the CSS file to apply styles specific to this component
 import './FilterBar.css';
 
-// This is like a recipe for making a FilterBar
+// Define the FilterBar component for filtering bots by class
 function FilterBar({ filterByClass }) {
-  // Here we list different kinds of bot characters
+  // List of bot classes to filter by
   const classes = ["Support", "Medic", "Assault", "Defender", "Captain", "Witch"];
   
-  // This part creates the buttons for each kind of bot
+  // Render the filter bar with buttons for each bot class
   return (
     <div>
-      {/* For each bot kind, make a button */}
+      {/* Iterate over the classes array to create a button for each bot class */}
       {classes.map(cls => (
-        <button key={cls} onClick={() => filterByClass(cls)}>
-          {cls}
+        // Each button represents a bot class and triggers filtering when clicked
+        <button 
+          key={cls} // Unique key for each button to help React track changes
+          onClick={() => filterByClass(cls)} // Call filterByClass with the class name when button is clicked
+        >
+          {cls} {/* Display the class name on the button */}
         </button>
       ))}
     </div>
   );
 }
 
-// We make sure this FilterBar can be used somewhere else in the app
+// Export the FilterBar component so it can be used in other parts of the application
 export default FilterBar;

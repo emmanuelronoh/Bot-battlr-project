@@ -51,11 +51,12 @@
   
   /* Style for delete buttons */
   .delete-button {
-    color: red; /* Red text */
-    border: none; /* No border */
-    background: none; /* No background */
+    color: rgb(4, 16, 242); /* blue text */
+    border: #f1f1f1; /* No border */
+    background-color: red; /* No background */
     cursor: pointer; /* Pointer cursor on hover */
     font-size: 16px; /* Font size */
+
   }
   
   /* Style for all buttons */

@@ -1,38 +1,39 @@
-import React from 'react'; // Import React library so we can use React features
-import './BotCollection.css'; // Import the CSS file to style this component
+import React from 'react'; // Import React to use JSX and component features
+import './BotCollection.css'; // Import CSS for styling this component
 
-// Create a BotCollection component that shows a list of bots
+// Define the BotCollection component to display a list of bots
 const BotCollection = ({ bots, addToArmy, deleteBot }) => {
   return (
-    // This is the main container for the bot collection
+    // Main container for the bot collection section
     <div className="bot-collection">
-      {/* A heading for the section */}
+      {/* Heading for the bot collection section */}
       <h2>Bot Collection</h2>
-      {/* A table to display the list of bots */}
+      
+      {/* Table to display the list of bots */}
       <table className="bot-table">
-        {/* Table header with column names */}
+        {/* Table header defines the column titles */}
         <thead>
           <tr>
-            <th>ID</th> {/* Column for bot ID */}
-            <th>Name</th> {/* Column for bot Name */}
-            <th>Avatar</th> {/* Column for bot Avatar */}
-            <th>Actions</th> {/* Column for actions we can take with the bot */}
+            <th>ID</th> {/* Column for displaying bot IDs */}
+            <th>Name</th> {/* Column for displaying bot names */}
+            <th>Avatar</th> {/* Column for displaying bot avatars */}
+            <th>Actions</th> {/* Column for action buttons (e.g., view details, delete) */}
           </tr>
         </thead>
         <tbody>
-          {/* Loop through each bot and create a row for it */}
+          {/* Iterate over the bots array to create a row for each bot */}
           {bots.map(bot => (
-            <tr key={bot.id}> {/* Unique key for each row */}
-              <td>{bot.id}</td> {/* Show bot's ID */}
-              <td>{bot.name}</td> {/* Show bot's Name */}
+            <tr key={bot.id}> {/* Unique key prop for each row to help React identify changes */}
+              <td>{bot.id}</td> {/* Display the bot's ID */}
+              <td>{bot.name}</td> {/* Display the bot's name */}
               <td>
-                {/* Show bot's Avatar image */}
+                {/* Display the bot's avatar image */}
                 <img src={bot.avatar_url} alt={bot.name} className="bot-avatar" />
               </td>
               <td>
-                {/* Button to view more details about the bot */}
+                {/* Button to view more details about the bot; triggers addToArmy function */}
                 <button onClick={() => addToArmy(bot)}>View Details</button>
-                {/* Button to delete the bot */}
+                {/* Button to delete the bot; triggers deleteBot function */}
                 <button onClick={() => deleteBot(bot)} className="delete-button">x</button>
               </td>
             </tr>
@@ -43,4 +44,4 @@ const BotCollection = ({ bots, addToArmy, deleteBot }) => {
   );
 };
 
-export default BotCollection; // Export the component so it can be used in other parts of the app
+export default BotCollection; // Export the BotCollection component for use in other parts of the application
